@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const InputPolje = () => {
-	const [lokacija, setLokacija] = useState('');
+const InputPolje = ({ grad, handleInputChange }) => {
 	return (
 		<div className='form-label-group'>
 			<input
@@ -10,11 +9,11 @@ const InputPolje = () => {
 				placeholder='Lokacija'
 				required=''
 				autoFocus=''
-				value={lokacija}
-				onChange={e => setLokacija(e.currentTarget.value)}
+				value={grad}
+				onChange={handleInputChange}
 			/>
 		</div>
 	);
 };
 
-export default InputPolje;
+export default React.memo(InputPolje);

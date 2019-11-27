@@ -1,21 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import logo from '../logo.png';
 
-const Header = () => {
-	const [location, setLocation] = useState({});
-
-	/* Provera da li browser podržava gelocation */
-	const geoLocation = 'geolocation' in navigator;
-
-	useEffect(() => {
-		if ('geolocation' in navigator) {
-			navigator.geolocation.getCurrentPosition(position => {
-				const { latitude, longitude } = position.coords;
-				setLocation({ latitude, longitude });
-			});
-		}
-	}, []);
-
+const Header = ({ geolocation }) => {
 	return (
 		<div className='text-center mb-4'>
 			<img className='mb-4 img-fluid' src={logo} alt='' />
@@ -25,12 +11,12 @@ const Header = () => {
 				api.
 			</p>
 			<p>
-				{geoLocation
-					? `Your latitude is: ${location.latitude} and your longitude: ${location.longitude}.`
-					: 'Geolocation is not supported by this browser.'}
+				{geolocation
+					? `Vaša geografska širina je: ${geolocation.latitude} a vaša geografska dužina je: ${geolocation.longitude}.`
+					: 'Geolokacija nije podržana u vašem browseru.'}
 			</p>
 		</div>
 	);
 };
 
-export default Header;
+export default React.memo(Header);

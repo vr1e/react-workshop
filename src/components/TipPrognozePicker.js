@@ -1,27 +1,29 @@
 import React from 'react';
 
-const TipPrognoze = () => {
+const TipPrognoze = ({ tipPrognoze, handleTipPrognoze }) => {
 	return (
 		<>
 			<div className='form-check form-check-inline mt-2'>
 				<input
 					className='form-check-input'
 					type='radio'
-					id='trenutnoVreme'
-					value='trenutnoVreme'
+					id='weather'
+					checked={tipPrognoze === 'weather'}
+					onChange={handleTipPrognoze}
 				/>
-				<label className='form-check-label' htmlFor='trenutnoVreme'>
+				<label className='form-check-label' htmlFor='weather'>
 					Trenutno vreme
 				</label>
 			</div>
 			<div className='form-check form-check-inline mt-2'>
-				<input
-					className='form-check-input'
-					type='radio'
-					id='prognoza'
-					value='prognoza'
-				/>
-				<label className='form-check-label' htmlFor='prognoza'>
+				<label className='form-check-label' htmlFor='forecast'>
+					<input
+						className='form-check-input'
+						type='radio'
+						id='forecast'
+						checked={tipPrognoze === 'forecast'}
+						onChange={handleTipPrognoze}
+					/>
 					Prognoza (5 dana/ 3 sata)
 				</label>
 			</div>
@@ -29,4 +31,4 @@ const TipPrognoze = () => {
 	);
 };
 
-export default TipPrognoze;
+export default React.memo(TipPrognoze);
