@@ -1,6 +1,11 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleTipPrognoze } from '../store/actions/prognozaActions';
 
-const TipPrognoze = ({ tipPrognoze, handleTipPrognoze }) => {
+const TipPrognoze = () => {
+	const { tipPrognoze } = useSelector(store => store.prognozaReducer);
+	const dispatch = useDispatch();
+
 	return (
 		<>
 			<div className='form-check form-check-inline mt-2'>
@@ -9,7 +14,7 @@ const TipPrognoze = ({ tipPrognoze, handleTipPrognoze }) => {
 					type='radio'
 					id='weather'
 					checked={tipPrognoze === 'weather'}
-					onChange={handleTipPrognoze}
+					onChange={() => dispatch(handleTipPrognoze('weather'))}
 				/>
 				<label className='form-check-label' htmlFor='weather'>
 					Trenutno vreme
@@ -22,7 +27,7 @@ const TipPrognoze = ({ tipPrognoze, handleTipPrognoze }) => {
 						type='radio'
 						id='forecast'
 						checked={tipPrognoze === 'forecast'}
-						onChange={handleTipPrognoze}
+						onChange={() => dispatch(handleTipPrognoze('forecast'))}
 					/>
 					Prognoza (5 dana/ 3 sata)
 				</label>

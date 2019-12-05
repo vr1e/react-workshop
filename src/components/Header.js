@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setGeolocation } from '../store/actions/prognozaActions';
 import logo from '../logo.png';
 
-const Header = ({ geolocation }) => {
+const Header = () => {
+	const { geolocation } = useSelector(store => store.prognozaReducer);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if ('geolocation' in navigator) {
+			dispatch(setGeolocation());
+		}
+	}, []);
+
 	return (
 		<div className='text-center mb-4'>
 			<img className='mb-4 img-fluid' src={logo} alt='' />

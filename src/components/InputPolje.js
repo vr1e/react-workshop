@@ -1,6 +1,11 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleInputChange } from '../store/actions/prognozaActions';
 
-const InputPolje = ({ grad, handleInputChange }) => {
+const InputPolje = () => {
+	const { grad } = useSelector(store => store.prognozaReducer);
+	const dispatch = useDispatch();
+
 	return (
 		<div className='form-label-group'>
 			<input
@@ -10,10 +15,10 @@ const InputPolje = ({ grad, handleInputChange }) => {
 				required=''
 				autoFocus=''
 				value={grad}
-				onChange={handleInputChange}
+				onChange={e => dispatch(handleInputChange(e.currentTarget.value))}
 			/>
 		</div>
 	);
 };
 
-export default React.memo(InputPolje);
+export default InputPolje;
