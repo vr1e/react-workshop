@@ -2,13 +2,15 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import prognozaReducer from './reducers/prognozaReducer';
+import layoutReducer from './reducers/layoutReducer';
 
 const initialState = {};
 
 const middleware = [thunk];
 
 const rootReducer = combineReducers({
-	prognozaReducer: prognozaReducer
+	prognozaReducer: prognozaReducer,
+	layoutReducer: layoutReducer
 });
 
 const store = createStore(

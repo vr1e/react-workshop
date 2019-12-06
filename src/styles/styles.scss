@@ -1,5 +1,28 @@
-body {
+.container {
+	height: 100vh;
+}
+.viewport {
 	background-color: #f5f5f5;
+	&.dark {
+		.custom-control-input:checked ~ .custom-control-label::before {
+			border-color: #6c757d;
+			background-color: #6c757d;
+		}
+		background-color: #292929;
+		color: #e1e1e1;
+		.text-dark {
+			color: #969696;
+		}
+		.card {
+			background-color: #464646;
+		}
+		input.form-control {
+			background-color: #cacaca;
+		}
+		.img-fluid {
+			opacity: 0.7;
+		}
+	}
 }
 .card-header {
 	padding-right: 65px;
