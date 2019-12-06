@@ -26,6 +26,7 @@ function App() {
 		<div className={`viewport ${darkMode ? 'dark' : ''}`}>
 			<div className='container'>
 				<div className='row justify-content-md-center'>
+					<div className='col-sm-2'></div>
 					<div className='col-sm-8'>
 						<DarkSwitch />
 						<form className='form-signin'>
@@ -52,8 +53,9 @@ function App() {
 							</div>
 						)}
 					</div>
+					<div className='col-sm-2'></div>
+					<Footer />
 				</div>
-				<Footer />
 			</div>
 		</div>
 	);
